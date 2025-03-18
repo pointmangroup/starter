@@ -1,6 +1,6 @@
-# Astro Sassify Template
+# Fons Sprinkler Repair
 
-A modern, responsive Astro template with Tailwind CSS and Alpine.js integration. This template provides a solid foundation for building fast, SEO-friendly websites with a clean design system.
+A marketing website for Fons
 
 ## 🚀 Features
 
@@ -69,6 +69,7 @@ The template uses the following font families:
 ### Animations
 
 Custom animations are included:
+
 - Fade In
 - Slide Up
 - Slide Down
@@ -76,16 +77,6 @@ Custom animations are included:
 ## 🚀 Getting Started
 
 1. Clone this repository
-2. Install dependencies with `npm install` or `pnpm install`
-3. Start the development server with `npm run dev` or `pnpm dev`
+2. Install dependencies with `npm install`
+3. Start the development server with `npm run dev`
 4. Visit `http://localhost:4321` to see your site
-
-## 📝 License
-
-MIT
-
-## 👀 Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Alpine.js Documentation](https://alpinejs.dev/start-here)
