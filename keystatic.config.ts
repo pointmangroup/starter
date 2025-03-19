@@ -17,12 +17,6 @@ export default config({
           label: 'Publish Date',
           validation: { isRequired: true },
         }),
-        author: fields.text({
-          label: 'Author Name',
-          validation: { isRequired: true },
-        }),
-        authorRole: fields.text({ label: 'Author Role' }),
-        authorAvatar: fields.url({ label: 'Author Avatar URL' }),
         category: fields.text({
           label: 'Category',
           validation: { isRequired: true },

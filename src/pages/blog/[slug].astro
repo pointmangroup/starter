@@ -35,14 +35,15 @@ try {
   
   post = {
     title: entry.data.title || 'Untitled Post',
-    date: entry.data.date || new Date().toLocaleDateString('en-US', {
+    date: entry.data.date ? entry.data.date.toLocaleDateString('en-US', {
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
+    }) : new Date().toLocaleDateString('en-US', {
       year: 'numeric', 
       month: 'long', 
       day: 'numeric'
     }),
-    author: entry.data.author || 'Anonymous',
-    authorRole: entry.data.authorRole || '',
-    authorAvatar: entry.data.authorAvatar || 'https://randomuser.me/api/portraits/lego/1.jpg',
     category: entry.data.category || 'Uncategorized',
     image: entry.data.image || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
   };
@@ -79,18 +80,6 @@ if (!post) {
         </div>
         
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-white">{post.title}</h1>
-        
-        <div class="flex items-center mb-8">
-          <img 
-            src={post.authorAvatar} 
-            alt={post.author} 
-            class="w-12 h-12 rounded-full mr-4 object-cover"
-          />
-          <div>
-            <p class="font-semibold text-gray-900 dark:text-white">{post.author}</p>
-            <p class="text-gray-600 dark:text-gray-400">{post.authorRole}</p>
-          </div>
-        </div>
         
         <img 
           src={post.image} 
