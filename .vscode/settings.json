@@ -1,0 +1,64 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mdoc]": {
+    "editor.formatOnSave": false
+  },
+  "prettier.configPath": ".prettierrc",
+  "files.associations": {
+    "*.mdoc": "markdown"
+  },
+  "github.copilot.chat.codeGeneration.instructions": [
+    { "text": "Use TypeScript with strict type checking for all new code." },
+    {
+      "text": "Always structure Astro components with separate frontmatter, markup, and styles as per Astro 5 best practices."
+    },
+    {
+      "text": "Use the Island Architecture pattern with explicit client:* directives in Astro components."
+    },
+    {
+      "text": "Use Tailwind 4 utility classes for styling and avoid custom CSS when possible."
+    },
+    {
+      "text": "Apply proper responsive design patterns using Tailwind's responsive utilities."
+    },
+    {
+      "text": "Organize imports in groups: built-in, external, internal, then parent/sibling."
+    },
+    { "text": "Use template literals instead of string concatenation." },
+    { "text": "Use const for variables that don't need reassignment." },
+    { "text": "Use object shorthand syntax where possible." },
+    {
+      "text": "Always use === and !== for equality comparisons except with null checks."
+    },
+    {
+      "text": "Use modern ES6+ features including optional chaining and nullish coalescing."
+    },
+    { "text": "Prefix unused variables or parameters with underscore (_)." },
+    { "text": "Create proper types/interfaces instead of using 'any' type." },
+    {
+      "text": "Use async/await instead of Promise chains for asynchronous operations."
+    },
+    {
+      "text": "Add JSDoc comments to functions, especially for complex logic."
+    },
+    {
+      "text": "Use destructuring assignment when accessing object properties."
+    },
+    {
+      "text": "Follow Astro's naming convention of PascalCase for components and kebab-case for files."
+    },
+    {
+      "text": "For dynamic components use Alpine JS."
+    },
+    {
+      "text": "Implement SEO best practices including Schema.org structured data (LocalBusiness, Product, FAQPage) with JSON-LD format, proper meta tags for social sharing (Open Graph, Twitter Cards), and semantic HTML5 elements to improve search engine visibility for small business marketing sites."
+    }
+  ]
+}

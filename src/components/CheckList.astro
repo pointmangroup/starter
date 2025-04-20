@@ -1,0 +1,47 @@
+---
+/**
+ * A reusable component that renders a list of items with check marks or circles
+ * @prop {string[]} items - Array of text items to display in the list
+ * @prop {string} iconColor - Optional Tailwind color class for the icon (default: "text-primary-500 dark:text-primary-400")
+ * @prop {string} style - Optional style variation for the list (options: "compact")
+ */
+interface Props {
+  items: string[];
+  iconColor?: string;
+  style?: 'compact' | '';
+}
+
+const {
+  items,
+  iconColor = 'text-primary-500 dark:text-primary-400',
+  style = '',
+} = Astro.props;
+
+const isCompact = style === 'compact';
+---
+
+<ul
+  class={`mb-6 ${isCompact ? 'flex flex-wrap gap-x-2 gap-y-1' : 'flex flex-wrap gap-4'}`}>
+  {
+    items.map((item) => (
+      <li class={`flex items-center ${isCompact ? 'text-sm' : ''}`}>
+        {isCompact ? (
+          <div
+            class={`bg-primary-500 dark:bg-primary-400 me-1.5 h-1.5 w-1.5 shrink-0 rounded-full`}
+            aria-hidden="true"
+          />
+        ) : (
+          <svg
+            class={`me-2 h-3.5 w-3.5 shrink-0 ${iconColor}`}
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+          </svg>
+        )}
+        {item}
+      </li>
+    ))
+  }
+</ul>

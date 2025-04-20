@@ -51,8 +51,14 @@
   --color-warning-900: #713f12;
   --color-warning-950: #422006;
 
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-display: Lexend, system-ui, sans-serif;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+
+  --font-display:
+    system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   --animate-fade-in: fadeIn 0.5s ease-in-out;
   --animate-slide-up: slideUp 0.5s ease-in-out;
@@ -107,11 +113,19 @@
 }
 
 @utility btn {
-  @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-hidden;
+  @apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-medium transition-all duration-300 focus:outline-hidden;
+}
+
+@utility btn-sm {
+  @apply btn px-2 py-2 text-sm sm:px-4;
 }
 
 @utility btn-primary {
   @apply btn bg-accent-400 hover:bg-accent-500 text-black shadow-md hover:shadow-lg;
+}
+
+@utility btn-primary-sm {
+  @apply btn-sm bg-accent-300 hover:bg-accent-400 tracking-wide text-black shadow-md hover:shadow-lg;
 }
 
 @utility btn-secondary {
@@ -123,11 +137,11 @@
 }
 
 @utility btn-outline {
-  @apply btn border-2 border-secondary-300 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-800 text-secondary-900 dark:text-secondary-100;
+  @apply btn border-secondary-300 dark:border-secondary-700 hover:bg-secondary-100 dark:hover:bg-secondary-800 text-secondary-900 dark:text-secondary-100 border-2;
 }
 
 @utility container-custom {
-  @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  @apply container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }
 
 @utility section {
@@ -135,32 +149,41 @@
 }
 
 @utility card {
-  @apply bg-white dark:bg-secondary-900 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-secondary-200 dark:border-secondary-800;
+  @apply dark:bg-secondary-900 border-secondary-200 dark:border-secondary-800 overflow-hidden rounded-xl border bg-white shadow-md transition-shadow duration-300 hover:shadow-lg;
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display;
   }
-  
+
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+    @apply text-4xl font-bold md:text-5xl lg:text-6xl;
   }
-  
+
   h2 {
-    @apply text-3xl md:text-4xl font-bold;
+    @apply text-3xl font-bold md:text-4xl;
   }
-  
+
   h3 {
-    @apply text-2xl md:text-3xl font-semibold;
+    @apply text-2xl font-semibold md:text-3xl;
   }
-  
+
   h4 {
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-xl font-semibold md:text-2xl;
   }
-  
+
   p {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base leading-relaxed md:text-lg;
+  }
+
+  main {
+    @apply pt-18 md:pt-20;
   }
 }
 
@@ -179,10 +202,10 @@
 
 /* Accessibility */
 .sr-only {
-  @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  @apply absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap;
 }
 
 /* Focus styles for keyboard navigation */
 :focus-visible {
-  @apply outline-hidden ring-2 ring-primary-500 dark:ring-primary-400;
+  @apply ring-primary-500 dark:ring-primary-400 ring-2 outline-hidden;
 }

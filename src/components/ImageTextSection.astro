@@ -1,0 +1,101 @@
+---
+/**
+ * Component for displaying an image and text content side by side
+ * Supports both image-left and image-right layouts
+ */
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  text?: string;
+  eyebrow?: string;
+  eyebrowStyle?: 'primary' | 'secondary' | 'accent';
+  image: ImageMetadata;
+  imageAlt: string;
+  imagePosition?: 'left' | 'right';
+}
+
+const {
+  title,
+  text,
+  eyebrow,
+  eyebrowStyle = 'primary',
+  image,
+  imageAlt,
+  imagePosition = 'right',
+} = Astro.props;
+
+const isImageRight = imagePosition === 'right';
+
+/**
+ * Returns the appropriate Tailwind classes for the eyebrow text based on the selected style
+ */
+const getEyebrowClasses = (): string => {
+  const baseClasses = 'mb-2 text-sm font-semibold uppercase tracking-wider';
+
+  switch (eyebrowStyle) {
+    case 'secondary':
+      return `${baseClasses} text-secondary-600 dark:text-secondary-400`;
+    case 'accent':
+      return `${baseClasses} text-accent-600 dark:text-accent-400`;
+    case 'primary':
+    default:
+      return `${baseClasses} text-primary-600 dark:text-primary-400`;
+  }
+};
+
+const eyebrowClasses = getEyebrowClasses();
+---
+
+<div class="mb-24">
+  <div class="mb-12 grid items-center gap-12 md:grid-cols-2">
+    <div class={isImageRight ? 'order-1' : 'order-2 md:order-1'}>
+      {
+        isImageRight ? (
+          <div>
+            {eyebrow && <p class={eyebrowClasses}>{eyebrow}</p>}
+            <h2 class="mb-4 text-3xl font-bold text-slate-900 dark:text-white">
+              {title}
+            </h2>
+            {text && (
+              <p class="mb-6 text-slate-600 dark:text-slate-300">{text}</p>
+            )}
+            <slot />
+          </div>
+        ) : (
+          <div class="overflow-hidden rounded-lg shadow-xl">
+            <Image
+              src={image}
+              alt={imageAlt}
+              class="h-auto w-full"
+            />
+          </div>
+        )
+      }
+    </div>
+    <div class={isImageRight ? 'order-2' : 'order-1 md:order-2'}>
+      {
+        isImageRight ? (
+          <div class="overflow-hidden rounded-lg shadow-xl">
+            <Image
+              src={image}
+              alt={imageAlt}
+              class="h-auto w-full"
+            />
+          </div>
+        ) : (
+          <div>
+            {eyebrow && <p class={eyebrowClasses}>{eyebrow}</p>}
+            <h2 class="mb-4 text-3xl font-bold text-slate-900 dark:text-white">
+              {title}
+            </h2>
+            {text && (
+              <p class="mb-6 text-slate-600 dark:text-slate-300">{text}</p>
+            )}
+            <slot />
+          </div>
+        )
+      }
+    </div>
+  </div>
+</div>

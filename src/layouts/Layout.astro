@@ -1,4 +1,5 @@
 ---
+import Navbar from '../components/Navbar.astro';
 import '../styles/global.css';
 import '../styles/transitions.css';
 import { ClientRouter } from 'astro:transitions';
@@ -8,14 +9,19 @@ export interface Props {
   description?: string;
 }
 
-const { 
-  title, 
-  description = "Modern SaaS landing page template with responsive design and modular sections."
+const {
+  title,
+  description = 'Modern SaaS landing page template with responsive design and modular sections.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<html
+  lang="en"
+  x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+  x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))"
+  :class="{ 'dark': darkMode }"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,13 +29,34 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <ClientRouter />
   </head>
-  <body class="antialiased bg-white dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 transition-colors duration-300">
+  <body
+    class="dark:bg-secondary-950 text-secondary-900 dark:text-secondary-100 bg-white antialiased transition-colors duration-300"
+  >
     <div id="page-wrapper" class="page-transition-wrapper">
+      <header>
+        <Navbar
+          desktopMenu={[
+            { text: 'Products', url: '/features', active: true },
+            { text: 'Pricing', url: '/pricing' },
+            { text: 'Blog', url: '/blog' },
+            { text: 'Contact', url: '/contact' },
+          ]}
+          mobileMenu={[
+            { text: 'Products', url: '/features', active: true },
+            { text: 'Pricing', url: '/pricing' },
+            { text: 'Blog', url: '/blog' },
+            { text: 'Contact', url: '/contact' },
+          ]}
+        />
+      </header>
       <slot />
     </div>
     <script>

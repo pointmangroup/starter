@@ -1,18 +1,20 @@
 {
-  "name": "@example/saas-landing",
+  "name": "fons-sprinkler-repair",
+  "description": "A website for Fons Sprinkler Repair.",
   "type": "module",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro build && astro preview",
+    "build": "NODE_ENV=production astro build",
+    "preview": "astro build && wrangler pages dev ./dist",
     "astro": "astro",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "publish": "wrangler publish"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",
+    "@astrojs/cloudflare": "^12.3.0",
     "@astrojs/markdoc": "^0.13.0",
     "@astrojs/react": "^4.2.1",
     "@keystatic/astro": "^5.0.6",
@@ -27,12 +29,17 @@
     "tailwindcss": "^4.0.14"
   },
   "devDependencies": {
+    "@eslint/js": "^9.22.0",
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
     "eslint": "^9.22.0",
-    "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-astro": "^1.3.1",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "globals": "^16.0.0",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.11"
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "typescript-eslint": "^8.27.0",
+    "wrangler": "^4.4.1"
   }
 }
