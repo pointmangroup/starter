@@ -1,8 +1,9 @@
 ---
+import type { AstroGlobal } from 'astro';
+
 interface MenuLink {
   text: string;
   url: string;
-  active?: boolean;
 }
 
 interface NavbarProps {
@@ -11,6 +12,17 @@ interface NavbarProps {
 }
 
 const { desktopMenu = [], mobileMenu = [] } = Astro.props as NavbarProps;
+
+// Get current pathname from Astro.url
+const currentPath = (Astro.url as URL).pathname;
+
+/**
+ * Returns true if the menu link matches the current path.
+ * @param linkUrl - The URL of the menu link.
+ * @param path - The current pathname.
+ */
+const isActive = (linkUrl: string, path: string): boolean =>
+  linkUrl === path || (linkUrl !== '/' && path.startsWith(linkUrl));
 ---
 
 <!-- Penguin UI Navbar component - Navbar with call to action -->
@@ -31,16 +43,16 @@ const { desktopMenu = [], mobileMenu = [] } = Astro.props as NavbarProps;
   <!-- Desktop Menu -->
   <ul class="hidden items-center gap-4 sm:flex">
     {
-      desktopMenu.map(({ text, url, active }) => (
+      desktopMenu.map(({ text, url }) => (
         <li>
           <a
             href={url}
             class={`${
-              active
+              isActive(url, currentPath)
                 ? 'text-primary hover:text-primary dark:text-primary-dark dark:hover:text-primary-dark font-bold'
                 : 'text-on-surface hover:text-primary dark:text-on-surface-dark dark:hover:text-primary-dark font-medium'
             } underline-offset-2 focus:underline focus:outline-hidden`}
-            aria-current={active ? 'page' : undefined}
+            aria-current={isActive(url, currentPath) ? 'page' : undefined}
           >
             {text}
           </a>
@@ -105,16 +117,16 @@ const { desktopMenu = [], mobileMenu = [] } = Astro.props as NavbarProps;
     class="divide-outline rounded-b-radius border-outline bg-surface-alt dark:divide-outline-dark dark:border-outline-dark dark:bg-surface-dark-alt fixed inset-x-0 top-0 z-10 flex max-h-svh flex-col divide-y overflow-y-auto border-b px-6 pt-20 pb-6 sm:hidden"
   >
     {
-      mobileMenu.map(({ text, url, active }) => (
+      mobileMenu.map(({ text, url }) => (
         <li class="py-4">
           <a
             href={url}
             class={`${
-              active
+              isActive(url, currentPath)
                 ? 'text-primary dark:text-primary-dark w-full text-lg font-bold'
                 : 'text-on-surface dark:text-on-surface-dark w-full text-lg font-medium'
             } focus:underline`}
-            aria-current={active ? 'page' : undefined}
+            aria-current={isActive(url, currentPath) ? 'page' : undefined}
           >
             {text}
           </a>
