@@ -5,13 +5,15 @@ import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
 import markdoc from '@astrojs/markdoc';
 import cloudflare from '@astrojs/cloudflare';
+import sitemap from '@astrojs/sitemap';
 
 // eslint-disable-next-line no-undef
 const isProd = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  site: 'https://fons-sprinkler-repair.com',
-  integrations: [alpinejs(), keystatic(), react(), markdoc()],
+  site: 'https://pmg-starter.com',
+  trailingSlash: 'never',
+  integrations: [alpinejs(), keystatic(), react(), markdoc(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
     resolve: {

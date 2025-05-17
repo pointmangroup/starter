@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HomepageHero2 from '../components/HomepageHero2.astro';
+import Features from '../components/Features.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Footer from '../components/Footer.astro';
+import HomepageHero from '../components/HomepageHero.astro';
+import HeroImageSlider from '../components/section/Hero/HeroImageSlider.astro';
+import HeroBackgroundVideo from '../components/section/Hero/HeroBackgroundVideo.astro';
+
+import heroFallbackImage from '../assets/images/LandscapeVideoScreenshot.jpg';
+import heroVideo from '../assets/video/LandscapingDemo-sm.mp4';
+
+const HeroImageSliderSlides = [
+  {
+    imgSrc:
+      'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-1.webp',
+    imgAlt:
+      'Vibrant abstract painting with swirling blue and light pink hues on a canvas.',
+    title: 'Front end developers',
+    description:
+      'The architects of the digital world, constantly battling against their mortal enemy – browser compatibility.',
+  },
+  {
+    imgSrc:
+      'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-2.webp',
+    imgAlt:
+      'Vibrant abstract painting with swirling red, yellow, and pink hues on a canvas.',
+    title: 'Back end developers',
+    description:
+      'Because not all superheroes wear capes, some wear headphones and stare at terminal screens',
+  },
+  {
+    imgSrc:
+      'https://penguinui.s3.amazonaws.com/component-assets/carousel/default-slide-3.webp',
+    imgAlt:
+      'Vibrant abstract painting with swirling blue and purple hues on a canvas.',
+    title: 'Full stack developers',
+    description: 'Where "burnout" is just a fancy term for "Tuesday".',
+  },
+];
+
+const HeroImageSliderSettings = {
+  autoplayIntervalTime: 5000,
+  showNavButtons: false,
+  showPlayPauseButton: false,
+};
+---
+
+<Layout title="Starter - Pointman Marketing Template">
+  <Header />
+  <main>
+    <HeroImageSlider
+      slides={HeroImageSliderSlides}
+      settings={HeroImageSliderSettings}
+    />
+    <HeroBackgroundVideo
+      videoSrc={heroVideo}
+      posterSrc={heroFallbackImage}
+      altText="Vimeo background video with optimized poster"
+    >
+      <div>
+        <h1 class="mb-4 text-4xl font-bold md:text-6xl">Video Background</h1>
+        <p class="text-lg md:text-xl">Seamlessly integrated with Astro</p>
+      </div>
+    </HeroBackgroundVideo>
+    <HomepageHero />
+    <HomepageHero2 />
+    <Features />
+    <Testimonials />
+    <Newsletter />
+  </main>
+  <Footer />
+</Layout>

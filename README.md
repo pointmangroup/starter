@@ -1,6 +1,6 @@
 # Fons Sprinkler Repair
 
-A marketing website for Fons
+Starter Project for ramping up new marketing sites quickly
 
 ## 🚀 Features
 
@@ -52,10 +52,10 @@ All commands are run from the root of the project, from a terminal:
 
 The template includes a custom color palette defined in `tailwind.config.mjs`:
 
-- Primary: Purple-based color scheme
-- Secondary: Slate-based color scheme
-- Accent: Lime-based color scheme
-- Warning: Yellow-based color scheme
+- Primary:
+- Secondary:
+- Accent:
+- Warning:
 
 You can customize these colors by editing the `tailwind.config.mjs` file.
 
@@ -63,8 +63,8 @@ You can customize these colors by editing the `tailwind.config.mjs` file.
 
 The template uses the following font families:
 
-- Sans: Inter (with system fallbacks)
-- Display: Lexend (with system fallbacks)
+- Sans:
+- Display:
 
 ### Animations
 
